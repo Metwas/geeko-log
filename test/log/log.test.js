@@ -28,7 +28,7 @@ const { LogService } = require("../../dist/main");
 
 /**_-_-_-_-_-_-_-_-_-_-_-_-_-          _-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
-const logger = new LogService();
+const logger = new LogService({ level: "info" });
 
 setTimeout(() =>
 {

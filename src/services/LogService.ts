@@ -67,6 +67,7 @@ export class LogService
               /** Assign default @see SonicConsoleTransport if not defined */
               this._logger = options?.logger ?? createLogger( {
                      level: options?.level ?? "info",
+                     silent: options?.level === "quiet",
                      transports: [
                             new SonicConsoleTransport()
                      ]
@@ -252,6 +253,7 @@ export class LogService
 
               /** Clone logger options exact ( Unless specified in the @see LogOptions ) from the initial injected options for this @see LogService */
               const logger: Logger = createLogger( {
+                     silent: ( options?.level ?? this._level ) === "quiet",
                      transports: this._logger.transports.slice( 0 )
               } );
 
@@ -274,6 +276,11 @@ export class LogService
         */
        public spinner( enabled?: boolean, marker?: string ): void
        {
+              if ( this._level === "quiet" )
+              {
+                     return;
+              }
+
               this._loading = enabled;
 
               if ( enabled )

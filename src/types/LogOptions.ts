@@ -34,7 +34,7 @@ export type Style = ( text: string, options?: LogOptions ) => string;
  * 
  * @public
  */
-export type LogLevel = "info" | "warn" | "error" | "debug" | "verbose";
+export type LogLevel = "info" | "warn" | "error" | "debug" | "verbose" | "quiet";
 
 /**
  * Log artifact options
