@@ -86,7 +86,7 @@ export class LogService {
         * @private
         * @type {String}
         */
-       private _title: string = "App";
+       private _title: string;
 
        /**
         * Logger message level filter
@@ -94,7 +94,7 @@ export class LogService {
         * @private
         * @type {LogLevel}
         */
-       private _level: LogLevel = "info";
+       private _level: LogLevel;
 
        /**
         * Underlying @see Transport(s) logger provider
