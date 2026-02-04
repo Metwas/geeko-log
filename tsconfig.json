@@ -3,15 +3,10 @@
               "module": "nodenext",
               "target": "esnext",
               "outDir": "dist",
-              "lib": [
-                     "ESNext"
-              ],
+              "lib": ["ESNext"],
+              "strict": true,
               "declaration": true,
-              "removeComments": true,
-              "experimentalDecorators": true,
-              "resolveJsonModule": true,
+              "removeComments": true
        },
-       "include": [
-              "src"
-       ]
+       "include": ["src"]
 }

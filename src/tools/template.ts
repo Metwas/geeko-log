@@ -1,28 +1,21 @@
 /**
-     MIT License
+ * Copyright (c) Metwas
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 2 of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
 
-     @Copyright (c) Metwas
-
-     Permission is hereby granted, free of charge, to any person obtaining a copy
-     of this software and associated documentation files (the "Software"), to deal
-     in the Software without restriction, including without limitation the rights
-     to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     copies of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
-
-     The above Copyright notice and this permission notice shall be included in all
-     copies or substantial portions of the Software.
-
-     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     AUTHORS OR Copyright HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-     SOFTWARE.
-*/
-
-/**_-_-_-_-_-_-_-_-_-_-_-_-_- @Imports _-_-_-_-_-_-_-_-_-_-_-_-_-*/
+/**_-_-_-_-_-_-_-_-_-_-_-_-_- Imports  _-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
 import { Badge, Style, Template } from "../types/LogOptions";
 
@@ -30,38 +23,37 @@ import { Badge, Style, Template } from "../types/LogOptions";
 
 /**
  * Self returning parameter function - echo
- * 
+ *
  * @public
- * @param {T} value 
+ * @param {T} value
  * @returns {T}
  */
-export function echo<T>( value: T ): T
-{
+export function echo<T>(value: T): T {
        return value;
-};
+}
 
 /**
  * Helper function for creating a @see string from the provided @see Template interface
- * 
+ *
  * @public
- * @param {Template} template 
+ * @param {Template} template
  * @returns {String}
  */
-export const createTemplateString: any = ( template: Template, artifacts?: any ): string =>
-{
-       const badges: Array<Badge> = template?.[ "badges" ];
+export const createTemplateString: any = (
+       template: Template,
+       artifacts?: any,
+): string => {
+       const badges: Array<Badge> = template?.["badges"];
 
-       const length: number = Array.isArray( badges ) ? badges.length : 0;
+       const length: number = Array.isArray(badges) ? badges.length : 0;
        let index: number = 0;
 
        let builder: string = "";
 
-       for ( ; index < length; index++ )
-       {
-              const badge: string = createBadgeString( badges[ index ], artifacts );
+       for (; index < length; index++) {
+              const badge: string = createBadgeString(badges[index], artifacts);
 
-              if ( typeof badge === "string" )
-              {
+              if (typeof badge === "string") {
                      builder += badge + " ";
               }
        }
@@ -71,16 +63,19 @@ export const createTemplateString: any = ( template: Template, artifacts?: any )
 
 /**
  * Helper for creating @see string from the provided @see Badge styling template
- * 
+ *
  * @public
- * @param {Badge} badge 
- * @param {Object} artifacts 
+ * @param {Badge} badge
+ * @param {Object} artifacts
  * @returns {String}
  */
-export const createBadgeString: any = ( badge: Badge, artifacts?: any ): string =>
-{
-       const styling: Style = typeof badge[ "style" ] === "function" ? badge[ "style" ] : echo;
-       const tag: string = artifacts?.[ badge[ "key" ] ] || badge[ "tag" ] || "";
+export const createBadgeString: any = (
+       badge: Badge,
+       artifacts?: any,
+): string => {
+       const styling: Style =
+              typeof badge["style"] === "function" ? badge["style"] : echo;
+       const tag: string = artifacts?.[badge["key"]] || badge["tag"] || "";
 
-       return styling( tag, artifacts );
+       return styling(tag, artifacts);
 };
