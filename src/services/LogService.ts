@@ -113,6 +113,14 @@ export class LogService {
        private _template: Template;
 
        /**
+        * Metadata cache reference
+        *
+        * @private
+        * @type {Object | undefined}
+        */
+       private _metacache: object | undefined = void 0;
+
+       /**
         * Information level logging
         *
         * @public
@@ -190,10 +198,14 @@ export class LogService {
         * @public
         * @returns {Object}
         */
-       public getMetadata(): any {
-              return {
-                     template: this._template,
-              };
+       public getMetadata(): object {
+              if (!this._metacache) {
+                     this._metacache = {
+                            template: this._template,
+                     };
+              }
+
+              return this._metacache;
        }
 
        /**
