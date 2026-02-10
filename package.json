@@ -23,11 +23,11 @@
        "homepage": "https://github.com/Metwas/geeko-log#readme",
        "dependencies": {
               "chalk": "4.1.2",
-              "sonic-boom": "^4.2.0",
+              "sonic-boom": "^4.2.1",
               "winston": "^3.19.0"
        },
        "devDependencies": {
-              "@types/node": "^20.19.31",
+              "@types/node": "^20.19.33",
               "typescript": "^5.9.3"
        }
 }
