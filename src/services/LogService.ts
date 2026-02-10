@@ -31,22 +31,6 @@ import { Logger, createLogger } from "winston";
 /**_-_-_-_-_-_-_-_-_-_-_-_-_-          _-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
 /**
- * Moves the CLI cursor up by 1 line
- *
- * @public
- * @type {String}
- */
-export const CLI_SHIFT_UP: string = "\x1B[1A";
-
-/**
- * Clears the entire current line
- *
- * @public
- * @type {String}
- */
-export const CLI_CLEAR_LINE: string = "\x1B[2K";
-
-/**
  * Global Logger service
  *
  * @public
@@ -154,17 +138,17 @@ export class LogService {
         * Error level logging
         *
         * @public
-        * @param {String} error
+        * @param {Error | Any} error
         */
-       public error(error: Error | string): void {
+       public error(error: Error | any): void {
               if (!error) {
                      return void 0;
               }
 
               this._logger.error(
-                     typeof error === "string"
-                            ? error
-                            : (error as Error).message,
+                     typeof error.message === "string"
+                            ? error.message
+                            : String(error),
                      this.getMetadata(),
               );
        }
