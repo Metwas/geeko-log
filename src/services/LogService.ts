@@ -138,9 +138,9 @@ export class LogService {
         * Error level logging
         *
         * @public
-        * @param {Error | Any} error
+        * @param {Error | Any | Unknown} error
         */
-       public error(error: Error | any): void {
+       public error(error: Error | any | unknown): void {
               if (!error) {
                      return void 0;
               }
